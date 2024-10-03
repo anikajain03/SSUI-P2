@@ -25,11 +25,12 @@ export class Spring extends DrawnObjectBase {
 
     //. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
     
-    // Override w & h setters so they enforce elastic size
+   // Override w & h setters so they enforce elastic size
     public override get w() {return super.w;}  
     public override set w(v : number) {
         //=== YOUR CODE HERE ===
         this._w = v;
+        this.wConfig = SizeConfig.elastic(this.naturalW);
         this.damageArea(this.x, this.y, this.w, this.h);
     }
 
@@ -37,9 +38,9 @@ export class Spring extends DrawnObjectBase {
     public override set h(v : number) {
         //=== YOUR CODE HERE ===
         this._h = v;
+        this.hConfig = SizeConfig.elastic(this.naturalH);
         this.damageArea(this.x, this.y, this.w, this.h);
     }
-
 
     //. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
