@@ -97,8 +97,8 @@ export class Row extends Group {
         let totalWidthMax = 0;
 
         let maxHeightMin = Number.NEGATIVE_INFINITY; // start with the smallest number possible
-        let maxHeightNat = Number.NEGATIVE_INFINITY; // start with the smallest number possible
-        let minHeightMax = Number.POSITIVE_INFINITY; // start with the largest number possible
+        let maxHeightNat = Number.NEGATIVE_INFINITY; 
+        let maxHeightMax = Number.NEGATIVE_INFINITY; 
 
         // iterate through children of Row
         for (let child of this.children) {
@@ -110,12 +110,12 @@ export class Row extends Group {
             // update height values
             maxHeightMin = Math.max(child.hConfig.min, maxHeightMin);
             maxHeightNat = Math.max(child.hConfig.nat, maxHeightNat);
-            minHeightMax = Math.min(child.hConfig.max, minHeightMax);
+            maxHeightMax = Math.max(child.hConfig.max, maxHeightMax);
         }
 
         // update wConfig and hConfig
         this.wConfig = new SizeConfig(totalWidthNat, totalWidthMin, totalWidthMax);
-        this.hConfig = new SizeConfig(maxHeightNat, maxHeightMin, minHeightMax);
+        this.hConfig = new SizeConfig(maxHeightNat, maxHeightMin, maxHeightMax);
     }
 
     //. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
